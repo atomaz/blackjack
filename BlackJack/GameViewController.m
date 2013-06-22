@@ -300,6 +300,8 @@
         sleep(5);
     }
     
+    
+    
     [self.turn dealerTurn];
     
     // faz a contagem dos pontos e redistribui as apostas
