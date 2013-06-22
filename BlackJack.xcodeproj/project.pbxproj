@@ -18,6 +18,18 @@
 		4D5565AD17738A5A00336154 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5565AC17738A5A00336154 /* Default-568h@2x.png */; };
 		4D5565B017738A5A00336154 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5565AE17738A5A00336154 /* MainStoryboard.storyboard */; };
 		4D5565B317738A5A00336154 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565B217738A5A00336154 /* GameViewController.m */; };
+		4D5565BC17738AEE00336154 /* BasePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565BB17738AEE00336154 /* BasePlayer.m */; };
+		4D5565C517738C9F00336154 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565C417738C9F00336154 /* Player.m */; };
+		4D5565C817738EB400336154 /* Dealer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565C717738EB400336154 /* Dealer.m */; };
+		4D5565CB17738ECF00336154 /* Turn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565CA17738ECF00336154 /* Turn.m */; };
+		4D5565E01773BC5D00336154 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565D91773BC5A00336154 /* Card.m */; };
+		4D5565E11773BC5D00336154 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565DB1773BC5B00336154 /* Deck.m */; };
+		4D5565E21773BC5D00336154 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565DD1773BC5B00336154 /* PlayingCard.m */; };
+		4D5565E31773BC5D00336154 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565DF1773BC5C00336154 /* PlayingCardDeck.m */; };
+		4D5565E51773D8E500336154 /* textura_huge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D5565E41773D8E500336154 /* textura_huge.jpg */; };
+		4D5565E71773DA0500336154 /* talabheim_paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5565E61773DA0500336154 /* talabheim_paper.png */; };
+		4D5565E91773DA6300336154 /* papelzl8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5565E81773DA6300336154 /* papelzl8.png */; };
+		4D5565EC177406AD00336154 /* CardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565EB177406AD00336154 /* CardViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +49,27 @@
 		4D5565AF17738A5A00336154 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4D5565B117738A5A00336154 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		4D5565B217738A5A00336154 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		4D5565BA17738AEE00336154 /* BasePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePlayer.h; sourceTree = "<group>"; };
+		4D5565BB17738AEE00336154 /* BasePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePlayer.m; sourceTree = "<group>"; };
+		4D5565C317738C9F00336154 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		4D5565C417738C9F00336154 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		4D5565C617738EB400336154 /* Dealer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dealer.h; sourceTree = "<group>"; };
+		4D5565C717738EB400336154 /* Dealer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dealer.m; sourceTree = "<group>"; };
+		4D5565C917738ECF00336154 /* Turn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Turn.h; sourceTree = "<group>"; };
+		4D5565CA17738ECF00336154 /* Turn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Turn.m; sourceTree = "<group>"; };
+		4D5565D81773BC5A00336154 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		4D5565D91773BC5A00336154 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		4D5565DA1773BC5A00336154 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		4D5565DB1773BC5B00336154 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		4D5565DC1773BC5B00336154 /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCard.h; sourceTree = "<group>"; };
+		4D5565DD1773BC5B00336154 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
+		4D5565DE1773BC5C00336154 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
+		4D5565DF1773BC5C00336154 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		4D5565E41773D8E500336154 /* textura_huge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = textura_huge.jpg; sourceTree = "<group>"; };
+		4D5565E61773DA0500336154 /* talabheim_paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talabheim_paper.png; sourceTree = "<group>"; };
+		4D5565E81773DA6300336154 /* papelzl8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papelzl8.png; sourceTree = "<group>"; };
+		4D5565EA177406AD00336154 /* CardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewCell.h; sourceTree = "<group>"; };
+		4D5565EB177406AD00336154 /* CardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +116,10 @@
 		4D55659C17738A5A00336154 /* BlackJack */ = {
 			isa = PBXGroup;
 			children = (
+				4D5565E81773DA6300336154 /* papelzl8.png */,
+				4D5565E61773DA0500336154 /* talabheim_paper.png */,
+				4D5565E41773D8E500336154 /* textura_huge.jpg */,
+				4D5565B917738AA700336154 /* Model */,
 				4D5565A517738A5A00336154 /* GameAppDelegate.h */,
 				4D5565A617738A5A00336154 /* GameAppDelegate.m */,
 				4D5565AE17738A5A00336154 /* MainStoryboard.storyboard */,
@@ -105,6 +142,47 @@
 				4D5565AC17738A5A00336154 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4D5565B917738AA700336154 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4D5565D61773B85D00336154 /* Cards */,
+				4D5565D71773B86A00336154 /* Players */,
+				4D5565C917738ECF00336154 /* Turn.h */,
+				4D5565CA17738ECF00336154 /* Turn.m */,
+				4D5565EA177406AD00336154 /* CardViewCell.h */,
+				4D5565EB177406AD00336154 /* CardViewCell.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4D5565D61773B85D00336154 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				4D5565D81773BC5A00336154 /* Card.h */,
+				4D5565D91773BC5A00336154 /* Card.m */,
+				4D5565DA1773BC5A00336154 /* Deck.h */,
+				4D5565DB1773BC5B00336154 /* Deck.m */,
+				4D5565DC1773BC5B00336154 /* PlayingCard.h */,
+				4D5565DD1773BC5B00336154 /* PlayingCard.m */,
+				4D5565DE1773BC5C00336154 /* PlayingCardDeck.h */,
+				4D5565DF1773BC5C00336154 /* PlayingCardDeck.m */,
+			);
+			name = Cards;
+			sourceTree = "<group>";
+		};
+		4D5565D71773B86A00336154 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				4D5565BA17738AEE00336154 /* BasePlayer.h */,
+				4D5565BB17738AEE00336154 /* BasePlayer.m */,
+				4D5565C317738C9F00336154 /* Player.h */,
+				4D5565C417738C9F00336154 /* Player.m */,
+				4D5565C617738EB400336154 /* Dealer.h */,
+				4D5565C717738EB400336154 /* Dealer.m */,
+			);
+			name = Players;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +242,9 @@
 				4D5565AB17738A5A00336154 /* Default@2x.png in Resources */,
 				4D5565AD17738A5A00336154 /* Default-568h@2x.png in Resources */,
 				4D5565B017738A5A00336154 /* MainStoryboard.storyboard in Resources */,
+				4D5565E51773D8E500336154 /* textura_huge.jpg in Resources */,
+				4D5565E71773DA0500336154 /* talabheim_paper.png in Resources */,
+				4D5565E91773DA6300336154 /* papelzl8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +258,15 @@
 				4D5565A317738A5A00336154 /* main.m in Sources */,
 				4D5565A717738A5A00336154 /* GameAppDelegate.m in Sources */,
 				4D5565B317738A5A00336154 /* GameViewController.m in Sources */,
+				4D5565BC17738AEE00336154 /* BasePlayer.m in Sources */,
+				4D5565C517738C9F00336154 /* Player.m in Sources */,
+				4D5565C817738EB400336154 /* Dealer.m in Sources */,
+				4D5565CB17738ECF00336154 /* Turn.m in Sources */,
+				4D5565E01773BC5D00336154 /* Card.m in Sources */,
+				4D5565E11773BC5D00336154 /* Deck.m in Sources */,
+				4D5565E21773BC5D00336154 /* PlayingCard.m in Sources */,
+				4D5565E31773BC5D00336154 /* PlayingCardDeck.m in Sources */,
+				4D5565EC177406AD00336154 /* CardViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +391,7 @@
 				4D5565B817738A5A00336154 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
