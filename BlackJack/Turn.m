@@ -98,24 +98,41 @@
             [p cancelBid];
         }
         
-        [self insertAtDeckCardsFrom:p];
+       
         
     }
-    
-    [self.standedPlayers removeAllObjects];
     
     // para os jogadores que desistiram, pagam metade da aposta
     for (Player *player in self.surrendedPlayers) {
         [player surrendBid];
-        // devolve carta ao deck
-        [self insertAtDeckCardsFrom:player];
     }
-    [self.surrendedPlayers removeAllObjects];
     
     // coloca as cartas do dealer de volta no deck
-    [self insertAtDeckCardsFrom:self.dealer];
+    
 }
 
+
+-(void) newTurn
+{
+    // primeiro remove as cartas existentes
+    for (Player *p in self.players) {
+         [self insertAtDeckCardsFrom:p];
+    }
+    [self insertAtDeckCardsFrom:self.dealer];
+    
+    // para depois distribuir novas cartas
+    
+    // TODO: alterar para retirar depois uma carta do topo. Ao criar um deck, criar com as cartas embaralhadas
+    for (Player *p in self.players) {
+        [p.cards addObject:[self.deck drawRandomCard]];
+        [p.cards addObject:[self.deck drawRandomCard]];
+    }
+    
+    
+    [self.dealer.cards addObject:[self.deck drawRandomCard]];
+    [self.dealer.cards addObject:[self.deck drawRandomCard]];
+    
+}
 
 // ***************  métodos auxiliares ******************
 
@@ -127,6 +144,7 @@
     }
     // retira a carta do jogador
     [basePlayer.cards removeAllObjects];
+    
 }
 
 -(NSMutableArray *)standedPlayers

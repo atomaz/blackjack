@@ -29,7 +29,8 @@
 
 -(void) receiveBid
 {
-    self.cash = self.bid * 2;
+    self.cash += self.bid * 2;
+    self.bid = 0;
 }
 
 -(void) payBid

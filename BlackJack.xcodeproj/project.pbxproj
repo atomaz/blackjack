@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D107C5F1777C7B3000254D1 /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D107C5C1777C7B3000254D1 /* PlayingCardView.m */; };
+		4D107C601777C7B3000254D1 /* PlayingCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D107C5E1777C7B3000254D1 /* PlayingCardCollectionViewCell.m */; };
 		4D55659717738A5A00336154 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D55659617738A5A00336154 /* UIKit.framework */; };
 		4D55659917738A5A00336154 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D55659817738A5A00336154 /* Foundation.framework */; };
 		4D55659B17738A5A00336154 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D55659A17738A5A00336154 /* CoreGraphics.framework */; };
@@ -26,13 +28,42 @@
 		4D5565E11773BC5D00336154 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565DB1773BC5B00336154 /* Deck.m */; };
 		4D5565E21773BC5D00336154 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565DD1773BC5B00336154 /* PlayingCard.m */; };
 		4D5565E31773BC5D00336154 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565DF1773BC5C00336154 /* PlayingCardDeck.m */; };
-		4D5565E51773D8E500336154 /* textura_huge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D5565E41773D8E500336154 /* textura_huge.jpg */; };
-		4D5565E71773DA0500336154 /* talabheim_paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5565E61773DA0500336154 /* talabheim_paper.png */; };
-		4D5565E91773DA6300336154 /* papelzl8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5565E81773DA6300336154 /* papelzl8.png */; };
-		4D5565EC177406AD00336154 /* CardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565EB177406AD00336154 /* CardViewCell.m */; };
+		4DADB22D1778783000B1DD30 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2101778783000B1DD30 /* cardback.png */; };
+		4DADB22E1778783000B1DD30 /* J♠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2111778783000B1DD30 /* J♠.png */; };
+		4DADB22F1778783000B1DD30 /* J♠@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2121778783000B1DD30 /* J♠@2x.png */; };
+		4DADB2301778783000B1DD30 /* J♣.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2131778783000B1DD30 /* J♣.png */; };
+		4DADB2311778783000B1DD30 /* J♣@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2141778783000B1DD30 /* J♣@2x.png */; };
+		4DADB2321778783000B1DD30 /* J♥.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2151778783000B1DD30 /* J♥.png */; };
+		4DADB2331778783000B1DD30 /* J♥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2161778783000B1DD30 /* J♥@2x.png */; };
+		4DADB2341778783000B1DD30 /* J♦.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2171778783000B1DD30 /* J♦.png */; };
+		4DADB2351778783000B1DD30 /* J♦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2181778783000B1DD30 /* J♦@2x.png */; };
+		4DADB2361778783000B1DD30 /* K♠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2191778783000B1DD30 /* K♠.png */; };
+		4DADB2371778783000B1DD30 /* K♠@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB21A1778783000B1DD30 /* K♠@2x.png */; };
+		4DADB2381778783000B1DD30 /* K♣.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB21B1778783000B1DD30 /* K♣.png */; };
+		4DADB2391778783000B1DD30 /* K♣@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB21C1778783000B1DD30 /* K♣@2x.png */; };
+		4DADB23A1778783000B1DD30 /* K♥.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB21D1778783000B1DD30 /* K♥.png */; };
+		4DADB23B1778783000B1DD30 /* K♥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB21E1778783000B1DD30 /* K♥@2x.png */; };
+		4DADB23C1778783000B1DD30 /* K♦.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB21F1778783000B1DD30 /* K♦.png */; };
+		4DADB23D1778783000B1DD30 /* K♦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2201778783000B1DD30 /* K♦@2x.png */; };
+		4DADB23E1778783000B1DD30 /* papelzl8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2211778783000B1DD30 /* papelzl8.png */; };
+		4DADB23F1778783000B1DD30 /* Q♠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2221778783000B1DD30 /* Q♠.png */; };
+		4DADB2401778783000B1DD30 /* Q♠@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2231778783000B1DD30 /* Q♠@2x.png */; };
+		4DADB2411778783000B1DD30 /* Q♣.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2241778783000B1DD30 /* Q♣.png */; };
+		4DADB2421778783000B1DD30 /* Q♣@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2251778783000B1DD30 /* Q♣@2x.png */; };
+		4DADB2431778783000B1DD30 /* Q♥.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2261778783000B1DD30 /* Q♥.png */; };
+		4DADB2441778783000B1DD30 /* Q♥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2271778783000B1DD30 /* Q♥@2x.png */; };
+		4DADB2451778783000B1DD30 /* Q♦.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2281778783000B1DD30 /* Q♦.png */; };
+		4DADB2461778783000B1DD30 /* Q♦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2291778783000B1DD30 /* Q♦@2x.png */; };
+		4DADB2471778783000B1DD30 /* talabheim_paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB22A1778783000B1DD30 /* talabheim_paper.png */; };
+		4DADB2481778783000B1DD30 /* textura_huge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB22B1778783000B1DD30 /* textura_huge.jpg */; };
+		4DADB2491778783000B1DD30 /* verso.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB22C1778783000B1DD30 /* verso.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D107C5B1777C7B2000254D1 /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		4D107C5C1777C7B3000254D1 /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
+		4D107C5D1777C7B3000254D1 /* PlayingCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardCollectionViewCell.h; sourceTree = "<group>"; };
+		4D107C5E1777C7B3000254D1 /* PlayingCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardCollectionViewCell.m; sourceTree = "<group>"; };
 		4D55659317738A5A00336154 /* BlackJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D55659617738A5A00336154 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4D55659817738A5A00336154 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,11 +96,35 @@
 		4D5565DD1773BC5B00336154 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
 		4D5565DE1773BC5C00336154 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		4D5565DF1773BC5C00336154 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
-		4D5565E41773D8E500336154 /* textura_huge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = textura_huge.jpg; sourceTree = "<group>"; };
-		4D5565E61773DA0500336154 /* talabheim_paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talabheim_paper.png; sourceTree = "<group>"; };
-		4D5565E81773DA6300336154 /* papelzl8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papelzl8.png; sourceTree = "<group>"; };
-		4D5565EA177406AD00336154 /* CardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewCell.h; sourceTree = "<group>"; };
-		4D5565EB177406AD00336154 /* CardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewCell.m; sourceTree = "<group>"; };
+		4DADB2101778783000B1DD30 /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardback.png; path = Images/cardback.png; sourceTree = "<group>"; };
+		4DADB2111778783000B1DD30 /* J♠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♠.png"; path = "Images/J♠.png"; sourceTree = "<group>"; };
+		4DADB2121778783000B1DD30 /* J♠@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♠@2x.png"; path = "Images/J♠@2x.png"; sourceTree = "<group>"; };
+		4DADB2131778783000B1DD30 /* J♣.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♣.png"; path = "Images/J♣.png"; sourceTree = "<group>"; };
+		4DADB2141778783000B1DD30 /* J♣@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♣@2x.png"; path = "Images/J♣@2x.png"; sourceTree = "<group>"; };
+		4DADB2151778783000B1DD30 /* J♥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♥.png"; path = "Images/J♥.png"; sourceTree = "<group>"; };
+		4DADB2161778783000B1DD30 /* J♥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♥@2x.png"; path = "Images/J♥@2x.png"; sourceTree = "<group>"; };
+		4DADB2171778783000B1DD30 /* J♦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♦.png"; path = "Images/J♦.png"; sourceTree = "<group>"; };
+		4DADB2181778783000B1DD30 /* J♦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♦@2x.png"; path = "Images/J♦@2x.png"; sourceTree = "<group>"; };
+		4DADB2191778783000B1DD30 /* K♠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "K♠.png"; path = "Images/K♠.png"; sourceTree = "<group>"; };
+		4DADB21A1778783000B1DD30 /* K♠@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "K♠@2x.png"; path = "Images/K♠@2x.png"; sourceTree = "<group>"; };
+		4DADB21B1778783000B1DD30 /* K♣.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "K♣.png"; path = "Images/K♣.png"; sourceTree = "<group>"; };
+		4DADB21C1778783000B1DD30 /* K♣@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "K♣@2x.png"; path = "Images/K♣@2x.png"; sourceTree = "<group>"; };
+		4DADB21D1778783000B1DD30 /* K♥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "K♥.png"; path = "Images/K♥.png"; sourceTree = "<group>"; };
+		4DADB21E1778783000B1DD30 /* K♥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "K♥@2x.png"; path = "Images/K♥@2x.png"; sourceTree = "<group>"; };
+		4DADB21F1778783000B1DD30 /* K♦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "K♦.png"; path = "Images/K♦.png"; sourceTree = "<group>"; };
+		4DADB2201778783000B1DD30 /* K♦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "K♦@2x.png"; path = "Images/K♦@2x.png"; sourceTree = "<group>"; };
+		4DADB2211778783000B1DD30 /* papelzl8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = papelzl8.png; path = Images/papelzl8.png; sourceTree = "<group>"; };
+		4DADB2221778783000B1DD30 /* Q♠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Q♠.png"; path = "Images/Q♠.png"; sourceTree = "<group>"; };
+		4DADB2231778783000B1DD30 /* Q♠@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Q♠@2x.png"; path = "Images/Q♠@2x.png"; sourceTree = "<group>"; };
+		4DADB2241778783000B1DD30 /* Q♣.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Q♣.png"; path = "Images/Q♣.png"; sourceTree = "<group>"; };
+		4DADB2251778783000B1DD30 /* Q♣@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Q♣@2x.png"; path = "Images/Q♣@2x.png"; sourceTree = "<group>"; };
+		4DADB2261778783000B1DD30 /* Q♥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Q♥.png"; path = "Images/Q♥.png"; sourceTree = "<group>"; };
+		4DADB2271778783000B1DD30 /* Q♥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Q♥@2x.png"; path = "Images/Q♥@2x.png"; sourceTree = "<group>"; };
+		4DADB2281778783000B1DD30 /* Q♦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Q♦.png"; path = "Images/Q♦.png"; sourceTree = "<group>"; };
+		4DADB2291778783000B1DD30 /* Q♦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Q♦@2x.png"; path = "Images/Q♦@2x.png"; sourceTree = "<group>"; };
+		4DADB22A1778783000B1DD30 /* talabheim_paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = talabheim_paper.png; path = Images/talabheim_paper.png; sourceTree = "<group>"; };
+		4DADB22B1778783000B1DD30 /* textura_huge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = textura_huge.jpg; path = Images/textura_huge.jpg; sourceTree = "<group>"; };
+		4DADB22C1778783000B1DD30 /* verso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = verso.png; path = Images/verso.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +141,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D107C611777C7DE000254D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4D107C5B1777C7B2000254D1 /* PlayingCardView.h */,
+				4D107C5C1777C7B3000254D1 /* PlayingCardView.m */,
+				4D107C5D1777C7B3000254D1 /* PlayingCardCollectionViewCell.h */,
+				4D107C5E1777C7B3000254D1 /* PlayingCardCollectionViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4D107C621777C7F3000254D1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4DADB2101778783000B1DD30 /* cardback.png */,
+				4DADB2211778783000B1DD30 /* papelzl8.png */,
+				4DADB2111778783000B1DD30 /* J♠.png */,
+				4DADB2121778783000B1DD30 /* J♠@2x.png */,
+				4DADB2131778783000B1DD30 /* J♣.png */,
+				4DADB2141778783000B1DD30 /* J♣@2x.png */,
+				4DADB2151778783000B1DD30 /* J♥.png */,
+				4DADB2161778783000B1DD30 /* J♥@2x.png */,
+				4DADB2171778783000B1DD30 /* J♦.png */,
+				4DADB2181778783000B1DD30 /* J♦@2x.png */,
+				4DADB2191778783000B1DD30 /* K♠.png */,
+				4DADB21A1778783000B1DD30 /* K♠@2x.png */,
+				4DADB21B1778783000B1DD30 /* K♣.png */,
+				4DADB21C1778783000B1DD30 /* K♣@2x.png */,
+				4DADB21D1778783000B1DD30 /* K♥.png */,
+				4DADB21E1778783000B1DD30 /* K♥@2x.png */,
+				4DADB21F1778783000B1DD30 /* K♦.png */,
+				4DADB2201778783000B1DD30 /* K♦@2x.png */,
+				4DADB2221778783000B1DD30 /* Q♠.png */,
+				4DADB2231778783000B1DD30 /* Q♠@2x.png */,
+				4DADB2241778783000B1DD30 /* Q♣.png */,
+				4DADB2251778783000B1DD30 /* Q♣@2x.png */,
+				4DADB2261778783000B1DD30 /* Q♥.png */,
+				4DADB2271778783000B1DD30 /* Q♥@2x.png */,
+				4DADB2281778783000B1DD30 /* Q♦.png */,
+				4DADB2291778783000B1DD30 /* Q♦@2x.png */,
+				4DADB22A1778783000B1DD30 /* talabheim_paper.png */,
+				4DADB22B1778783000B1DD30 /* textura_huge.jpg */,
+				4DADB22C1778783000B1DD30 /* verso.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		4D55658A17738A5A00336154 = {
 			isa = PBXGroup;
 			children = (
@@ -116,12 +218,9 @@
 		4D55659C17738A5A00336154 /* BlackJack */ = {
 			isa = PBXGroup;
 			children = (
-				4D5565E81773DA6300336154 /* papelzl8.png */,
-				4D5565E61773DA0500336154 /* talabheim_paper.png */,
-				4D5565E41773D8E500336154 /* textura_huge.jpg */,
 				4D5565B917738AA700336154 /* Model */,
-				4D5565A517738A5A00336154 /* GameAppDelegate.h */,
-				4D5565A617738A5A00336154 /* GameAppDelegate.m */,
+				4D107C621777C7F3000254D1 /* Images */,
+				4D107C611777C7DE000254D1 /* View */,
 				4D5565AE17738A5A00336154 /* MainStoryboard.storyboard */,
 				4D5565B117738A5A00336154 /* GameViewController.h */,
 				4D5565B217738A5A00336154 /* GameViewController.m */,
@@ -133,6 +232,8 @@
 		4D55659D17738A5A00336154 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4D5565A517738A5A00336154 /* GameAppDelegate.h */,
+				4D5565A617738A5A00336154 /* GameAppDelegate.m */,
 				4D55659E17738A5A00336154 /* BlackJack-Info.plist */,
 				4D55659F17738A5A00336154 /* InfoPlist.strings */,
 				4D5565A217738A5A00336154 /* main.m */,
@@ -151,8 +252,6 @@
 				4D5565D71773B86A00336154 /* Players */,
 				4D5565C917738ECF00336154 /* Turn.h */,
 				4D5565CA17738ECF00336154 /* Turn.m */,
-				4D5565EA177406AD00336154 /* CardViewCell.h */,
-				4D5565EB177406AD00336154 /* CardViewCell.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -242,9 +341,35 @@
 				4D5565AB17738A5A00336154 /* Default@2x.png in Resources */,
 				4D5565AD17738A5A00336154 /* Default-568h@2x.png in Resources */,
 				4D5565B017738A5A00336154 /* MainStoryboard.storyboard in Resources */,
-				4D5565E51773D8E500336154 /* textura_huge.jpg in Resources */,
-				4D5565E71773DA0500336154 /* talabheim_paper.png in Resources */,
-				4D5565E91773DA6300336154 /* papelzl8.png in Resources */,
+				4DADB22D1778783000B1DD30 /* cardback.png in Resources */,
+				4DADB22E1778783000B1DD30 /* J♠.png in Resources */,
+				4DADB22F1778783000B1DD30 /* J♠@2x.png in Resources */,
+				4DADB2301778783000B1DD30 /* J♣.png in Resources */,
+				4DADB2311778783000B1DD30 /* J♣@2x.png in Resources */,
+				4DADB2321778783000B1DD30 /* J♥.png in Resources */,
+				4DADB2331778783000B1DD30 /* J♥@2x.png in Resources */,
+				4DADB2341778783000B1DD30 /* J♦.png in Resources */,
+				4DADB2351778783000B1DD30 /* J♦@2x.png in Resources */,
+				4DADB2361778783000B1DD30 /* K♠.png in Resources */,
+				4DADB2371778783000B1DD30 /* K♠@2x.png in Resources */,
+				4DADB2381778783000B1DD30 /* K♣.png in Resources */,
+				4DADB2391778783000B1DD30 /* K♣@2x.png in Resources */,
+				4DADB23A1778783000B1DD30 /* K♥.png in Resources */,
+				4DADB23B1778783000B1DD30 /* K♥@2x.png in Resources */,
+				4DADB23C1778783000B1DD30 /* K♦.png in Resources */,
+				4DADB23D1778783000B1DD30 /* K♦@2x.png in Resources */,
+				4DADB23E1778783000B1DD30 /* papelzl8.png in Resources */,
+				4DADB23F1778783000B1DD30 /* Q♠.png in Resources */,
+				4DADB2401778783000B1DD30 /* Q♠@2x.png in Resources */,
+				4DADB2411778783000B1DD30 /* Q♣.png in Resources */,
+				4DADB2421778783000B1DD30 /* Q♣@2x.png in Resources */,
+				4DADB2431778783000B1DD30 /* Q♥.png in Resources */,
+				4DADB2441778783000B1DD30 /* Q♥@2x.png in Resources */,
+				4DADB2451778783000B1DD30 /* Q♦.png in Resources */,
+				4DADB2461778783000B1DD30 /* Q♦@2x.png in Resources */,
+				4DADB2471778783000B1DD30 /* talabheim_paper.png in Resources */,
+				4DADB2481778783000B1DD30 /* textura_huge.jpg in Resources */,
+				4DADB2491778783000B1DD30 /* verso.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +391,8 @@
 				4D5565E11773BC5D00336154 /* Deck.m in Sources */,
 				4D5565E21773BC5D00336154 /* PlayingCard.m in Sources */,
 				4D5565E31773BC5D00336154 /* PlayingCardDeck.m in Sources */,
-				4D5565EC177406AD00336154 /* CardViewCell.m in Sources */,
+				4D107C5F1777C7B3000254D1 /* PlayingCardView.m in Sources */,
+				4D107C601777C7B3000254D1 /* PlayingCardCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

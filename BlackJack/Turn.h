@@ -34,6 +34,7 @@
 -(void)dealerTurn;
 
 -(void) endTurn;
+-(void) newTurn;
 -(NSString *) statusTurnMessageForPlayer:(BasePlayer *)p;
 
 @end
