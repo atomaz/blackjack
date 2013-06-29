@@ -28,6 +28,8 @@
 		4D5565E11773BC5D00336154 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565DB1773BC5B00336154 /* Deck.m */; };
 		4D5565E21773BC5D00336154 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565DD1773BC5B00336154 /* PlayingCard.m */; };
 		4D5565E31773BC5D00336154 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565DF1773BC5C00336154 /* PlayingCardDeck.m */; };
+		4DAA92D8177E49DB00BE433A /* HandCardsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAA92D7177E49DB00BE433A /* HandCardsView.m */; };
+		4DAA92DA177E542700BE433A /* MesaFundo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA92D9177E542700BE433A /* MesaFundo.png */; };
 		4DADB22D1778783000B1DD30 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2101778783000B1DD30 /* cardback.png */; };
 		4DADB22E1778783000B1DD30 /* J♠.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2111778783000B1DD30 /* J♠.png */; };
 		4DADB22F1778783000B1DD30 /* J♠@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB2121778783000B1DD30 /* J♠@2x.png */; };
@@ -96,6 +98,9 @@
 		4D5565DD1773BC5B00336154 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
 		4D5565DE1773BC5C00336154 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		4D5565DF1773BC5C00336154 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		4DAA92D6177E49DB00BE433A /* HandCardsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandCardsView.h; sourceTree = "<group>"; };
+		4DAA92D7177E49DB00BE433A /* HandCardsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandCardsView.m; sourceTree = "<group>"; };
+		4DAA92D9177E542700BE433A /* MesaFundo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MesaFundo.png; sourceTree = "<group>"; };
 		4DADB2101778783000B1DD30 /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardback.png; path = Images/cardback.png; sourceTree = "<group>"; };
 		4DADB2111778783000B1DD30 /* J♠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♠.png"; path = "Images/J♠.png"; sourceTree = "<group>"; };
 		4DADB2121778783000B1DD30 /* J♠@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "J♠@2x.png"; path = "Images/J♠@2x.png"; sourceTree = "<group>"; };
@@ -148,6 +153,8 @@
 				4D107C5C1777C7B3000254D1 /* PlayingCardView.m */,
 				4D107C5D1777C7B3000254D1 /* PlayingCardCollectionViewCell.h */,
 				4D107C5E1777C7B3000254D1 /* PlayingCardCollectionViewCell.m */,
+				4DAA92D6177E49DB00BE433A /* HandCardsView.h */,
+				4DAA92D7177E49DB00BE433A /* HandCardsView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -155,6 +162,7 @@
 		4D107C621777C7F3000254D1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4DAA92D9177E542700BE433A /* MesaFundo.png */,
 				4DADB2101778783000B1DD30 /* cardback.png */,
 				4DADB2211778783000B1DD30 /* papelzl8.png */,
 				4DADB2111778783000B1DD30 /* J♠.png */,
@@ -370,6 +378,7 @@
 				4DADB2471778783000B1DD30 /* talabheim_paper.png in Resources */,
 				4DADB2481778783000B1DD30 /* textura_huge.jpg in Resources */,
 				4DADB2491778783000B1DD30 /* verso.png in Resources */,
+				4DAA92DA177E542700BE433A /* MesaFundo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +402,7 @@
 				4D5565E31773BC5D00336154 /* PlayingCardDeck.m in Sources */,
 				4D107C5F1777C7B3000254D1 /* PlayingCardView.m in Sources */,
 				4D107C601777C7B3000254D1 /* PlayingCardCollectionViewCell.m in Sources */,
+				4DAA92D8177E49DB00BE433A /* HandCardsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

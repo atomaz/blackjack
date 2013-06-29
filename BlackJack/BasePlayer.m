@@ -16,10 +16,12 @@
     int total = 0;
     for (int i = 0; i < [self.cards count]; i++) {
         PlayingCard *card = (PlayingCard *)self.cards[i];
-        if (card.rank > 10) {
-            total += 10;
-        } else {
-            total += card.rank;
+        if (card.faceUp) {
+            if (card.rank > 10) {
+                total += 10;
+            } else {
+                total += card.rank;
+            }
         }
     }
     return total;

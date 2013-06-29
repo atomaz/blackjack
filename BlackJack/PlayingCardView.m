@@ -43,16 +43,22 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds
-                                                           cornerRadius:12.0];
+    
+    super.backgroundColor = [UIColor clearColor];
+    
+    UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:5];
     
     [roundedRect addClip];
+    UIRectFill(self.bounds);
     
     [[UIColor whiteColor] setFill];
-    UIRectFill(self.bounds);
+    [roundedRect fill];
+    
     
     [[UIColor blackColor] setStroke];
     [roundedRect stroke];
+    
+  
     
     if (self.faceUp) {
         UIImage *faceImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@.png", [self rankAsString], self.suit]];
@@ -68,6 +74,17 @@
     } else {
         [[UIImage imageNamed:@"cardback.png"] drawInRect:self.bounds];
     }
+    
+    [self setAlpha:0];
+    [UIView animateWithDuration:1
+                          delay:0
+                        options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionTransitionCrossDissolve
+                     animations:
+        ^{
+                         
+            [self setAlpha:1.0];
+
+        }completion:nil];
 }
 
 #define PIP_FONT_SCALE_FACTOR 0.20

@@ -15,4 +15,6 @@
 
 - (Card *)drawRandomCard;
 
+- (int) numberOfCardsInDeck;
+
 @end

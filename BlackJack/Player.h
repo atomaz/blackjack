@@ -12,6 +12,7 @@
 
 @property (readonly,nonatomic) int cash; // montante
 @property (readonly,nonatomic) int bid; // dinheiro apostado
+@property (nonatomic) bool doubledown;
 
 -(void) receiveBid;
 -(void) payBid;

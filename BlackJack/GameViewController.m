@@ -13,167 +13,271 @@
 #import "PlayingCard.h"
 #import "PlayingCardCollectionViewCell.h"
 #import "PlayingCardView.h"
+#import "HandCardsView.h"
 
-@interface GameViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface GameViewController ()
 
+// MAIN ENTITIES
 @property (strong, nonatomic) PlayingCardDeck* deck;
 @property (strong, nonatomic) Turn* turn;
 @property (nonatomic) BOOL dealerTurn;
+@property (strong, nonatomic) BasePlayer *currentPlayerTurn;
 
+
+// LABELS
 @property (weak, nonatomic) IBOutlet UILabel *bidLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cashLabel;
-@property (weak, nonatomic) IBOutlet UISlider *slider;
-@property (weak, nonatomic) IBOutlet UIButton *bidButton;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfCardsLabel;
 
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+
+
+// TURN BUTTONS
+@property (weak, nonatomic) IBOutlet UIButton *bidButton;
 @property (weak, nonatomic) IBOutlet UIButton *hitButton;
 @property (weak, nonatomic) IBOutlet UIButton *doubleDownButton;
 @property (weak, nonatomic) IBOutlet UIButton *standButton;
 @property (weak, nonatomic) IBOutlet UIButton *surrenderButton;
 
-@property (weak, nonatomic) IBOutlet UICollectionView *playerCollectionView;
-@property (weak, nonatomic) IBOutlet UICollectionView *dealerCollectionView;
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+// HAND CARD VIEWS
+@property (weak, nonatomic) IBOutlet HandCardsView *playerHandCardsView;
+@property (weak, nonatomic) IBOutlet HandCardsView *dealerHandCardsView;
+@property (weak, nonatomic) IBOutlet HandCardsView *randomAgentHandCardsView;
+@property (weak, nonatomic) IBOutlet HandCardsView *heuristicAgentHandCardsView;
 
 @end
 
 @implementation GameViewController
 
 
-// collection view methods
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (Turn *)turn
 {
-    return 1;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    
-    NSLog(@"numberOfItemsInSection");
-    if (collectionView == self.playerCollectionView) {
-        NSLog(@"CollectionView do PLAYER tem %d cartas", [[[self.turn.players objectAtIndex:0] cards] count]);
-        return [[[self.turn.players objectAtIndex:0] cards] count];
-    } else if (collectionView == self.dealerCollectionView) {
-        NSLog(@"CollectionView do DEALER tem %d cartas", [self.turn.dealer.cards count]);
-        return [self.turn.dealer.cards count];
+    if(!_turn) {
+        self.turn = [[Turn alloc] initTurnUsingDeck:[[PlayingCardDeck alloc] init]];
+        
+        NSLog(@"Criando um jogador");
+        
+        Player *humanPlayer = [[Player alloc] initWithCash:self.slider.maximumValue];
+        [self.turn.players addObject:humanPlayer];
+        
+        // adicionar agentes
+        Player *randomPlayer = [[Player alloc] initWithCash:self.slider.maximumValue];
+        [self.turn.players addObject:randomPlayer];
+        
+        Player *heuristicPlayer = [[Player alloc] initWithCash:self.slider.maximumValue];
+        [self.turn.players addObject:heuristicPlayer];
+        
+        
+        self.dealerTurn = NO;
     }
-    return 0;
-}
-
-
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"cellForItemArIdexPath");
-    UICollectionViewCell *cell;
-    PlayingCard *card = nil;
-    BOOL faceup = YES;
-    // player
-    if(collectionView == self.playerCollectionView) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Player Card" forIndexPath:indexPath];
-        card = [[[self.turn.players objectAtIndex:0] cards] objectAtIndex: indexPath.item];
- 
-    // dealer
-    } else if (collectionView == self.dealerCollectionView) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Dealer Card" forIndexPath:indexPath];
-        card = [self.turn.dealer.cards objectAtIndex:indexPath.item];
-        if (indexPath.item < [collectionView numberOfItemsInSection:0] - 1) {
-            //if (!self.dealerTurn) {
-                faceup = NO;
-            //}
-        }
-    }
-    [self updateCell:cell usingCard:card isFaceUp:faceup];
+    return _turn;
     
-    
-
-    return cell;
-
 }
-
--(void)updateCell:(UICollectionViewCell *)cell usingCard:(PlayingCard *)card isFaceUp:(BOOL) faceUp
-{
-    if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]]) {
-        PlayingCardView *playingCardView = ((PlayingCardCollectionViewCell *) cell).playingCardView;
-        if ([card isKindOfClass:[PlayingCard class]]) {
-            PlayingCard *playingCard = (PlayingCard *) card;
-            playingCardView.rank = playingCard.rank;
-            playingCardView.suit = playingCard.suit;
-            playingCardView.faceUp = faceUp;
-            playingCardView.alpha = playingCard.isUnplayable ? 0.3 : 1.0;
-        }
-    }
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:true];
-    self.playerCollectionView.delegate = self;
-    self.playerCollectionView.dataSource = self;
-    self.dealerCollectionView.delegate = self;
-    self.dealerCollectionView.dataSource = self;
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [self updateUI];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 -(void) initGame
 {
         
-        NSLog(@"Dando as cartas");
-        // distribui as cartas
-        [self.turn newTurn];
-        
-        NSLog(@"Atualizando a view");
-        // atualiza a view
-        [self updateUI];
+    NSLog(@"Dando as cartas");
+    // distribui as cartas
+    [self.turn newTurn];
+    
+    self.currentPlayerTurn = nil;
+    
+    // atualização das cartas pós jogo, evitando que as
+    // cartas do jogo anterior sejam exibidas
+    [self updateCardViews];
+    
+    
+    NSLog(@"Atualizando a view");
+    // atualiza a view
+    [self updateUI];
+    
+    // seta como o primeiro jogador 
+    self.currentPlayerTurn = self.turn.players[0];
 }
+
+-(void) updateCardViews
+{
+    //humano
+    [self.playerHandCardsView.cards removeAllObjects];
+    for (UIView *v in self.playerHandCardsView.subviews) {
+        [v removeFromSuperview];
+    }
+    [self.playerHandCardsView setNeedsDisplay];
+    
+    // agente aleatório
+    [self.randomAgentHandCardsView.cards removeAllObjects];
+    for (UIView *v in self.randomAgentHandCardsView.subviews) {
+        [v removeFromSuperview];
+    }
+    [self.randomAgentHandCardsView setNeedsDisplay];
+    
+    
+    // agente com heurística
+    [self.heuristicAgentHandCardsView.cards removeAllObjects];
+    for (UIView *v in self.heuristicAgentHandCardsView.subviews) {
+        [v removeFromSuperview];
+    }
+    [self.heuristicAgentHandCardsView setNeedsDisplay];
+    
+    [self.dealerHandCardsView.cards removeAllObjects];
+    for (UIView *v in self.dealerHandCardsView.subviews) {
+        [v removeFromSuperview];
+    }
+    [self.dealerHandCardsView setNeedsDisplay];
+}
+
+-(void) endTurn
+{
+    // dá a vez para os outros dois agentes
+    self.currentPlayerTurn = self.turn.players[1];
+    [self randomAgentTurn:(Player *)self.currentPlayerTurn];
+    
+    self.currentPlayerTurn = self.turn.players[2];
+    [self randomAgentTurn:(Player *)self.currentPlayerTurn];
+    
+
+    // dealer termina virando a carta e distribuindo os pontos
+    self.currentPlayerTurn = self.turn.dealer;
+    self.dealerTurn = YES;
+    [self updateUI];
+    
+    
+    // Vez do dealer ... Só joga se todos terminaram. Compra se somente se tiver menos de 17 pontos
+    [self.turn dealerTurn];
+    
+    
+    // faz a contagem dos pontos e redistribui as apostas
+    [self.turn endTurn];
+    self.dealerTurn = NO;
+    self.currentPlayerTurn = nil;
+    
+    [self updateUI];
+    
+}
+
+
+
+-(void)randomAgentTurn:(Player *)agent
+{
+    Player *randomAgent = self.turn.players[1];
+    double randomBid = 15;
+    
+    [randomAgent setBid:randomBid];
+    
+    int randomNumber = arc4random() % 100;
+    
+    if (randomNumber <= 25) {
+        [self.turn hitCardFor:randomAgent];
+        [self.turn standFor:randomAgent];
+    } else if (randomNumber <= 50) {
+        [self.turn surrenderFor:randomAgent];
+    } else if (randomNumber <= 75) {
+        [self.turn doubleDownFor:randomAgent];
+        [self.turn standFor:randomAgent];
+    } else {
+        [self.turn standFor:randomAgent];
+    }
+    
+}
+
+
+-(void) heuristicAgentTurn:(Player *)agent
+{
+    int points = [agent cardPoints];
+    while ( points < 17) {
+        int probability = arc4random() % 100;
+        
+        if (probability < 5 && [self.turn.dealer cardPoints] == 10) {
+            [self.turn surrenderFor:agent];
+            return;
+        } else if (points >= 12 && points <= 14 && !agent.doubledown && probability <= 40) {
+            [self.turn doubleDownFor:agent];
+        } else {
+            [self.turn hitCardFor:agent];
+        }
+    }
+    // pontuação >= 17 e não desistiu
+    [self.turn standFor:agent];
+    
+}
+
 
 -(void) updateUI
 {
-            
-    [self.playerCollectionView reloadData];
-    
-    [self.dealerCollectionView reloadData];
-
     
     // player 0
-    Player *p = (Player *)[self.turn.players objectAtIndex:0];
+    Player *human = (Player *)[self.turn.players objectAtIndex:0];
+    Player *randomAgent = (Player *)[self.turn.players objectAtIndex:1];
+    Player *heuristicAgent = (Player *)[self.turn.players objectAtIndex:2];
 
-    self.pointsLabel.text = [[NSString alloc] initWithFormat:@"%d", [p cardPoints]];
-    self.cashLabel.text =[[NSString alloc] initWithFormat:@"R$ %d", [p cash]];
+    self.pointsLabel.text = [[NSString alloc] initWithFormat:@"%d", [human cardPoints]];
+    self.cashLabel.text =[[NSString alloc] initWithFormat:@"R$ %d", [human cash]];
+    //self.numberOfCardsLabel.text = [[NSString alloc] stringByAppendingFormat:@"%d cards", [self.deck numberOfCardsInDeck]];
     
-  
-    // TODO: fazer para o player 1 (outra collection view)
-    // TODO: fazer para o player 2 ...
-
+    
+    if (self.currentPlayerTurn == nil) {
+        
+        [self drawCardsFromPlayer:human usingView:self.playerHandCardsView];
+        [self drawCardsFromPlayer:randomAgent usingView:self.randomAgentHandCardsView];
+        [self drawCardsFromPlayer:heuristicAgent usingView:self.heuristicAgentHandCardsView];
+        [self drawCardsFromPlayer:self.turn.dealer usingView:self.dealerHandCardsView];
+        
+//        [UIView transitionFromView:self.playerHandCardsView toView:self.randomAgentHandCardsView duration:3 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear completion:nil];
+//        
+//       
+//        
+//        [UIView transitionFromView:self.randomAgentHandCardsView toView:self.heuristicAgentHandCardsView duration:3 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear completion:nil];
+//        
+//        
+//        
+//        [UIView transitionFromView:self.heuristicAgentHandCardsView toView:self.dealerHandCardsView duration:3 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear completion:nil];
+        
+       
+        
+        
+        
+    } else if (self.currentPlayerTurn == human) {
+        
+        [self drawCardsFromPlayer:human usingView:self.playerHandCardsView];
+        
+    } else if (self.currentPlayerTurn == randomAgent) {
+        
+        [self drawCardsFromPlayer:randomAgent usingView:self.randomAgentHandCardsView];
+        
+    } else if (self.currentPlayerTurn == heuristicAgent) {
+        
+        [self drawCardsFromPlayer:heuristicAgent usingView:self.heuristicAgentHandCardsView];
+        
+    } else if (self.currentPlayerTurn == self.turn.dealer) {
+        
+        [self drawCardsFromPlayer:self.turn.dealer usingView:self.dealerHandCardsView];
+    }
+    
+    
+    // desenhando novas cartas
+   
+    
     
     // mostra as cartas e os botões
     
-    if (p.bid) {
+    if (human.bid) {
         // oculta os botões da aposta
         self.slider.hidden = YES;
         self.bidButton.hidden = YES;
         
         self.hitButton.hidden = NO;
         self.doubleDownButton.hidden = NO;
+        self.doubleDownButton.enabled = !human.doubledown;
         self.standButton.hidden = NO;
         self.surrenderButton.hidden = NO;
         
         // se houver aposta, seta o valor da aposta.
-        self.bidLabel.text =[[NSString alloc] initWithFormat:@"R$ %d", [p bid]];
+        self.bidLabel.text =[[NSString alloc] initWithFormat:@"R$ %d", [human bid]];
         
-        self.messageLabel.text = [self.turn statusTurnMessageForPlayer:[self.turn.players objectAtIndex:0]];
+        [self updateMessageUsingAnimationWithStatus:[self.turn statusTurnMessageForPlayer:[self.turn.players objectAtIndex:0]]];
 
     } else {
         self.slider.hidden = NO;
@@ -188,10 +292,24 @@
         // se não houver aposta, pega o valor corrente do slider
         self.bidLabel.text =[[NSString alloc] initWithFormat:@"R$ %.f", self.slider.value];
         
-        self.messageLabel.text = @"";
+        [self updateMessageUsingAnimationWithStatus:@""];
     }
 
+}
 
+-(void)drawCardsFromPlayer:(BasePlayer *)player usingView:(HandCardsView *)view
+{
+    for (PlayingCard *card in player.cards) {
+        card.faceUp = YES;
+        // inicializa a view
+        if (![view.cards containsObject:card]) {
+            [view.cards addObject:card];
+        }
+        
+    }
+    
+    [view setNeedsDisplay];
+    
 }
 
 
@@ -199,8 +317,7 @@
 {
     Player *p = [self.turn.players objectAtIndex:0];
     p.bid = self.slider.value;
-    self.cashLabel.text = [[NSString alloc] initWithFormat:@"R$ %d",p.cash];
-        
+    [self.cashLabel setText:[[NSString alloc] initWithFormat:@"R$ %d",p.cash]];
     [self initGame];
 }
 
@@ -210,33 +327,10 @@
 }
 
 
-- (Turn *)turn
-{
-    if(!_turn) {
-        self.turn = [[Turn alloc] init];
-        
-        NSLog(@"Criando um jogador");
-        
-        Player *player = [[Player alloc] initWithCash:self.slider.maximumValue];
-        
-        
-        [self.turn.players addObject:player];
-        self.turn.dealer = [[Dealer alloc] init];
-        
-        NSLog(@"Criando um deck");
-        // inicializa o deck
-        self.turn.deck = [[PlayingCardDeck alloc] init];
-        
-        self.dealerTurn = NO;
-    }
-    return _turn;
-
-}
-
 - (IBAction)stand:(id)sender
 {
     Player *p =[self.turn.players objectAtIndex:0];
-    self.messageLabel.text = [self.turn standFor:p];
+    [self updateMessageUsingAnimationWithStatus:[self.turn standFor:p]];
     
     // exibr msg
     [self endTurn];
@@ -245,7 +339,7 @@
 - (IBAction)hit:(id)sender
 {
     Player *p =[self.turn.players objectAtIndex:0];
-    self.messageLabel.text = [self.turn hitCardFor:p];
+    [self updateMessageUsingAnimationWithStatus: [self.turn hitCardFor:p]];
     
     [self updateUI];
 }
@@ -253,7 +347,7 @@
 - (IBAction)doubleDown:(id)sender
 {
     Player *p =[self.turn.players objectAtIndex:0];
-    self.messageLabel.text = [self.turn doubleDownFor:p];
+    [self updateMessageUsingAnimationWithStatus:[self.turn doubleDownFor:p]];
     
     [self updateUI];    
 }
@@ -262,62 +356,45 @@
 {
     
     Player *p =[self.turn.players objectAtIndex:0];
-    self.messageLabel.text = [self.turn surrenderFor:p];
+    [self updateMessageUsingAnimationWithStatus:[self.turn surrenderFor:p]];
     
     [self endTurn];
     
     [self updateUI];
 }
 
--(void) endTurn
+-(void) updateMessageUsingAnimationWithStatus:(NSString *) message
 {
-    // dá a vez para os outros dois agentes
-    
-    
-    
-    // dealer termina virando a carta e distribuindo os pontos
-    self.dealerTurn = YES;    
-    [self updateUI];
-    
-    
-    // se dealer tiver menos de 17 pontos, compra outra carta
-    while ([self.turn.dealer cardPoints] < 17) {
-        [self.turn hitCardFor:self.turn.dealer];
-        
-        [UIView transitionWithView:self.playerCollectionView
-                duration:2.0
-                options:UIViewAnimationOptionBeginFromCurrentState
-                animations:^
-                {
-                    [self.dealerCollectionView reloadData];
-                    
-                } completion:nil];
-        
-        
-    }
-    
-    // a new comment
-    
-    [self.turn dealerTurn];
-    
-    // faz a contagem dos pontos e redistribui as apostas
-    
-    [self.turn endTurn];
-    
-    self.dealerTurn = NO;
-    
-    
-    [self updateUI];
-    
-}
+
+    [self.messageLabel setText:message];
+    [self.messageLabel setAlpha:0.0];
+    [UIView animateWithDuration:1.0
+                          delay:0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         [self.messageLabel setAlpha:1.0];
+     }
+                     completion:^(BOOL finished)
+     {
+         if(finished)
+         {
+             [UIView animateWithDuration:1.5
+                                   delay:4
+                                 options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                              animations:^(void)
+              {
+                  [self.messageLabel setAlpha:0.0];
+              }
+              completion:^(BOOL finished)
+              {
+                  if(finished)
+                      NSLog(@"Hurray. Label fadedIn & fadedOut");
+              }];
+         }
+     }];}
 
 
--(void)agentTurn:(Player *)agent
-{
-    
-    // agente faz alguma coisa
-    
-}
 
 
 @end

@@ -7,9 +7,9 @@
 //
 
 #import "Dealer.h"
+#import "PlayingCard.h"
 
 @implementation Dealer
-
 
 
 @end

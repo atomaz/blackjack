@@ -43,5 +43,9 @@
     return randomCard;
 }
 
+- (int) numberOfCardsInDeck {
+    return 19; // [self.cards count];
+}
+
 
 @end

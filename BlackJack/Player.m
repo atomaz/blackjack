@@ -46,6 +46,7 @@
     } else {
         _bid = bid;
     }
+    self.doubledown = NO;
 
 }
 
@@ -53,6 +54,7 @@
 {
     self.cash -= self.bid; // retira mais metade do montante
     self.bid *= 2; // dobra o valor da aposta
+    self.doubledown = YES;
 }
 
 // desiste do jogo .. paga metade da aposta

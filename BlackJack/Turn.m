@@ -11,8 +11,28 @@
 #import "Player.h"
 #import "Dealer.h"
 #import "PlayingCardDeck.h"
+#import "PlayingCard.h"
+
+@interface Turn ()
+
+// deck temporário. Só é visível na classe Turn
+@property (strong, nonatomic, readwrite) NSMutableArray *tempDeck;
+
+@end
 
 @implementation Turn
+
+-(id)initTurnUsingDeck: (PlayingCardDeck *)deck
+{
+    self = [super init];
+    if (self) {
+        self.deck = deck;
+        self.tempDeck = [[NSMutableArray alloc] init];
+        self.dealer = [[Dealer alloc] init];
+    }
+    
+    return self;
+}
 
 
 // **************** ações comuns ao player e ao dealer ********************
@@ -97,9 +117,6 @@
             // jogador fez a mesma pontuação que o dealer não perde nem ganha
             [p cancelBid];
         }
-        
-       
-        
     }
     
     // para os jogadores que desistiram, pagam metade da aposta
@@ -107,22 +124,32 @@
         [player surrendBid];
     }
     
-    // coloca as cartas do dealer de volta no deck
-    
 }
 
 
--(void) newTurn
+//
+-(bool) newTurn
 {
+    
+    bool newGame = NO;
     // primeiro remove as cartas existentes
     for (Player *p in self.players) {
-         [self insertAtDeckCardsFrom:p];
+         [self insertAtTempDeckCardsFrom:p];
     }
-    [self insertAtDeckCardsFrom:self.dealer];
+    [self insertAtTempDeckCardsFrom:self.dealer];
     
-    // para depois distribuir novas cartas
+    // se o número de carta de decks for inferior ao
+    // número de jogadores vezes 4 o turno acaba
+    if ([self.deck numberOfCardsInDeck] < [self.players count] * 4) {
+        // retorna um novo jogo contendo todas as cartas
+        
+        for (PlayingCard *card in self.tempDeck) {
+            [self.deck addCard:card atTop:NO];
+        }
+        newGame = YES;
+    }
     
-    // TODO: alterar para retirar depois uma carta do topo. Ao criar um deck, criar com as cartas embaralhadas
+    // Cada jogador recebe inicialmente duas cartas
     for (Player *p in self.players) {
         [p.cards addObject:[self.deck drawRandomCard]];
         [p.cards addObject:[self.deck drawRandomCard]];
@@ -131,16 +158,18 @@
     
     [self.dealer.cards addObject:[self.deck drawRandomCard]];
     [self.dealer.cards addObject:[self.deck drawRandomCard]];
+    
+    return newGame;
     
 }
 
 // ***************  métodos auxiliares ******************
 
--(void)insertAtDeckCardsFrom:(BasePlayer *)basePlayer
+-(void)insertAtTempDeckCardsFrom:(BasePlayer *)basePlayer
 {
-    for (PlayingCardDeck *c in basePlayer.cards) {
-        // adiciona no deck a carta
-        [self.deck addCard:(Card *)c atTop:NO];
+    for (PlayingCard *card in basePlayer.cards) {
+        // adiciona no deck temporário a carta já usada
+        [self.tempDeck addObject:card];
     }
     // retira a carta do jogador
     [basePlayer.cards removeAllObjects];

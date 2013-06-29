@@ -16,6 +16,7 @@
 @interface Turn : NSObject
 
 @property (strong, nonatomic) PlayingCardDeck *deck;
+@property (strong, nonatomic, readonly) NSMutableArray *tempDeck;
 @property (strong, nonatomic) NSMutableArray *players;
 @property (strong, nonatomic) Dealer *dealer;
 @property (strong, nonatomic) NSMutableArray* standedPlayers;
@@ -30,11 +31,13 @@
 -(NSString *) surrenderFor:(Player *)player;
 
 
+-(id)initTurnUsingDeck: (Deck *)deck;
+
 // ações do dealer
 -(void)dealerTurn;
 
 -(void) endTurn;
--(void) newTurn;
+-(bool) newTurn;
 -(NSString *) statusTurnMessageForPlayer:(BasePlayer *)p;
 
 @end
