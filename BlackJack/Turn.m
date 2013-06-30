@@ -38,7 +38,9 @@
 // **************** ações comuns ao player e ao dealer ********************
 -(NSString *) hitCardFor:(BasePlayer *)basePlayer
 {
-    [basePlayer.cards addObject:[self.deck drawRandomCard]];
+    Card *c = (PlayingCard *) [self.deck drawRandomCard];
+    c.faceUp = YES;
+    [basePlayer.cards addObject:c];
     return [self statusTurnMessageForPlayer:basePlayer];
 }
 
@@ -53,8 +55,7 @@
 {
     [player doubleBid];
     Card *card = [self.deck drawRandomCard];
-    // card.faceUp = NO; // não sei se a carta deverá estar virada para baixo ou não ...
-    
+    card.faceUp = YES;
     [player.cards addObject:card];
     return [self statusTurnMessageForPlayer:player];
 }
@@ -151,13 +152,20 @@
     
     // Cada jogador recebe inicialmente duas cartas
     for (Player *p in self.players) {
-        [p.cards addObject:[self.deck drawRandomCard]];
-        [p.cards addObject:[self.deck drawRandomCard]];
+        PlayingCard *c = (PlayingCard *)[self.deck drawRandomCard];
+        c.faceUp = YES;
+        [p.cards addObject:c];
+        c = (PlayingCard *)[self.deck drawRandomCard];
+        c.faceUp = YES;
+        [p.cards addObject:c];
     }
     
-    
-    [self.dealer.cards addObject:[self.deck drawRandomCard]];
-    [self.dealer.cards addObject:[self.deck drawRandomCard]];
+    PlayingCard *c = (PlayingCard *)[self.deck drawRandomCard];
+    c.faceUp = YES;
+    [self.dealer.cards addObject:c];
+    c = (PlayingCard *)[self.deck drawRandomCard];
+    c.faceUp = NO;
+    [self.dealer.cards addObject:c];
     
     return newGame;
     

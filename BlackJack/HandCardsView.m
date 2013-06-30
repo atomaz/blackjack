@@ -68,7 +68,7 @@
         
         [self drawSingleCardView:view atPosition:p];
         p.x += 30;
-        p.y -= 10;
+        //p.y -= 10; // manter na mesma altura.
         
         if (last) {
             [UIView transitionFromView:last
@@ -85,7 +85,7 @@
 {
     
     [self addSubview:view];
-    CGRect rect = CGRectMake(point.x, point.y, 100.0, 120.0);
+    CGRect rect = CGRectMake(point.x, point.y, 80.0, 95.0);
     
     view.frame = rect;
     
