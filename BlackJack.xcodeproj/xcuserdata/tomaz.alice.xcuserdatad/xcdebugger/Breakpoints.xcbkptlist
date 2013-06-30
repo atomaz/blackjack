@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "394303670.74801"
+         timestampString = "394324846.903238"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "427"
-         endingLineNumber = "427"
+         startingLineNumber = "421"
+         endingLineNumber = "421"
          landmarkName = "-doubleDown:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -125,11 +125,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/BasePlayer.m"
-         timestampString = "394297371.120469"
+         timestampString = "394324846.903238"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "27"
-         endingLineNumber = "27"
+         startingLineNumber = "29"
+         endingLineNumber = "29"
          landmarkName = "-cardPoints"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +138,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "394303670.74801"
+         timestampString = "394324846.903238"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "350"
-         endingLineNumber = "350"
+         startingLineNumber = "344"
+         endingLineNumber = "344"
          landmarkName = "-heuristicAgentTurn:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -156,6 +156,19 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "74"
          endingLineNumber = "74"
+         landmarkName = "-dealerTurn"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "BlackJack/Turn.m"
+         timestampString = "394323750.087113"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
          landmarkName = "-dealerTurn"
          landmarkType = "5">
       </FileBreakpoint>
