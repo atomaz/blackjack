@@ -10,4 +10,6 @@
 
 @interface PlayingCardDeck : Deck
 
+-(id)initWithNumberOfDecks:(int)numberOfDecks;
+
 @end

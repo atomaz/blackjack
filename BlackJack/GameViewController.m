@@ -199,11 +199,6 @@
         [self drawCardsFromPlayer:self.turn.dealer usingView:self.dealerHandCardsView];
     }
     
-    
-    // desenhando novas cartas
-    
-    
-    
     // mostra as cartas e os botões
     
     if (human.bid) {
@@ -244,7 +239,7 @@
 - (Turn *)turn
 {
     if(!_turn) {
-        self.turn = [[Turn alloc] initTurnUsingDeck:[[PlayingCardDeck alloc] init]];
+        self.turn = [[Turn alloc] initTurnUsingDeck:[[PlayingCardDeck alloc] initWithNumberOfDecks:3]];
         
         NSLog(@"Criando um jogador");
         
@@ -291,7 +286,6 @@
     [self updateUI];
     
     // Vez do dealer ... Só joga se todos terminaram. Compra se somente se tiver menos de 17 pontos
-    [self updateMessageUsingAnimationWithStatus:@"Compra cartas se p < 17"];
     [self.turn dealerTurn];
     
     [self updateUI];

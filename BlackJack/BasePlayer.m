@@ -19,6 +19,8 @@
         if (card.faceUp) {
             if (card.rank > 10) {
                 total += 10;
+            } else if (card.rank == 1) { // quer dizer que é o Ás
+                total += 11;
             } else {
                 total += card.rank;
             }
