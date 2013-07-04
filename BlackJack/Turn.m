@@ -90,6 +90,10 @@
 
 -(void) endTurn
 {
+    for (PlayingCard *c in self.tempDeck) {
+        NSLog(@"%d %@", c.rank, c.suit);
+    }
+    
     // somente os jogadores que decidiram continuar
     for (Player *p in self.standedPlayers) {
         

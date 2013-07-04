@@ -10,12 +10,12 @@
 #import "Card.h"
 
 @interface Deck()
-@property (strong,nonatomic) NSMutableArray *cards;
+
 @end
 
 @implementation Deck
 
-@synthesize cards = _cards;
+//@synthesize cards = _cards;
 
 - (NSMutableArray *)cards {
     if(!_cards) _cards = [[NSMutableArray alloc] init];

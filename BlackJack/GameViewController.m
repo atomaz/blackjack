@@ -130,33 +130,34 @@
 
 -(void) updateCardViews
 {
+    [self animateHandCardView:self.playerHandCardsView];
+    
+    [self animateHandCardView:self.randomAgentHandCardsView];
+    
+    [self animateHandCardView:self.heuristicAgentHandCardsView];
+    
+    [self animateHandCardView:self.dealerHandCardsView];
+    
+}
+
+-(void) animateHandCardView:(HandCardsView *)view
+{
+    int originalx = view.frame.origin.x;
+    int originaly = view.frame.origin.y;
+    view.frame = CGRectMake(self.view.frame.size.width/2, -40, self.playerHandCardsView.frame.size.width, self.playerHandCardsView.frame.size.height);
+    
+    [UIView animateWithDuration:1 animations:^{
+        view.frame = CGRectMake(originalx,originaly,
+                                self.playerHandCardsView.frame.size.width,
+                                self.playerHandCardsView.frame.size.height);
+    }];
+    
     //humano
-    [self.playerHandCardsView.cards removeAllObjects];
-    for (UIView *v in self.playerHandCardsView.subviews) {
+    [view.cards removeAllObjects];
+    for (UIView *v in view.subviews) {
         [v removeFromSuperview];
     }
-    [self.playerHandCardsView setNeedsDisplay];
-    
-    // agente aleatório
-    [self.randomAgentHandCardsView.cards removeAllObjects];
-    for (UIView *v in self.randomAgentHandCardsView.subviews) {
-        [v removeFromSuperview];
-    }
-    [self.randomAgentHandCardsView setNeedsDisplay];
-    
-    
-    // agente com heurística
-    [self.heuristicAgentHandCardsView.cards removeAllObjects];
-    for (UIView *v in self.heuristicAgentHandCardsView.subviews) {
-        [v removeFromSuperview];
-    }
-    [self.heuristicAgentHandCardsView setNeedsDisplay];
-    
-    [self.dealerHandCardsView.cards removeAllObjects];
-    for (UIView *v in self.dealerHandCardsView.subviews) {
-        [v removeFromSuperview];
-    }
-    [self.dealerHandCardsView setNeedsDisplay];
+    [view setNeedsDisplay];
 }
 
 -(void) updateUI
@@ -215,7 +216,6 @@
         // se houver aposta, seta o valor da aposta.
         self.bidLabel.text =[[NSString alloc] initWithFormat:@"R$ %d", [human bid]];
         
-        [self updateMessageUsingAnimationWithStatus:[self.turn statusTurnMessageForPlayer:[self.turn.players objectAtIndex:0]]];
         
     } else {
         self.slider.hidden = NO;
@@ -261,21 +261,22 @@
 }
 
 
-
 -(void) endTurn
 {
     // dá a vez para os outros dois agentes
     self.currentPlayerTurn = self.turn.players[1];
     [self randomAgentTurn:(Player *)self.currentPlayerTurn];
     
+    [self updateUI];
+    
     self.currentPlayerTurn = self.turn.players[2];
-    [self heuristicAgentTurn:(Player *)self.currentPlayerTurn];
+    [self heuristicCountAgentTurn:(Player *)self.currentPlayerTurn];
+    
+    [self updateUI];
         
     // dealer termina virando a carta e distribuindo os pontos
     self.currentPlayerTurn = self.turn.dealer;
     self.dealerTurn = YES;
-    [self updateUI];
-    
     
     [self updateMessageUsingAnimationWithStatus:@"**** Dealer ****"];
     [self updateMessageUsingAnimationWithStatus:@"Flipping last card."];
@@ -300,7 +301,6 @@
     [self updateUI];
     
 }
-
 
 
 -(void)randomAgentTurn:(Player *)agent
@@ -338,7 +338,6 @@
     
 }
 
-
 -(void) heuristicAgentTurn:(Player *)agent
 {
     [self updateMessageUsingAnimationWithStatus:@"**** Agent H Turn! ****"];
@@ -372,6 +371,62 @@
 }
 
 
+-(void) heuristicCountAgentTurn:(Player *)agent
+{
+    [self updateMessageUsingAnimationWithStatus:@"**** Agent H Turn! ****"];
+    [self updateMessageUsingAnimationWithStatus:@"Bid: 15."];
+    double randomBid = 15;
+    [agent setBid:randomBid];
+    
+    // probabilidade de tirar uma carta cuja a pontuação seja menor ou igual a 21
+    double probability;
+    
+    while ([agent cardPoints] < 17) {
+        
+
+        probability = [self calcProbability];
+        
+        [self updateMessageUsingAnimationWithStatus:[NSString stringWithFormat:@"Prob.: %f.", probability]];
+        
+        if (probability < 0.50 || [self.turn.dealer cardPoints] == 10) {
+            [self updateMessageUsingAnimationWithStatus:@"Action: Surrender."];
+            [self.turn surrenderFor:agent];
+            return;
+        } else if (!agent.doubledown && probability >= 0.75 ) {
+            [self updateMessageUsingAnimationWithStatus:@"Action: DoubleDown."];
+            [self.turn doubleDownFor:agent];
+        } else {
+            [self updateMessageUsingAnimationWithStatus:@"Action: Hit."];
+            [self.turn hitCardFor:agent];
+        }
+
+    }
+    
+    // pontuação >= 17 e não desistiu
+    [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
+    [self.turn standFor:agent];
+    
+
+}
+ 
+
+-(double) calcProbability {
+    double probability = 0;
+    
+    int x = 21 - [self.currentPlayerTurn cardPoints];
+    
+    for (PlayingCard *c in [self.turn.deck cards]) {
+        int index = c.rank;
+        if (index <= x) {
+            probability++;
+        }
+    }
+    // probabilidade de tirar uma carta cuja a pontuação seja menor ou igual a 21
+    probability /= [[self.turn.deck cards] count];
+    
+    return probability;
+}
+
 -(void)drawCardsFromPlayer:(BasePlayer *)player usingView:(HandCardsView *)view
 {
     for (PlayingCard *card in player.cards) {
@@ -385,7 +440,6 @@
     [view setNeedsDisplay];
     
 }
-
 
 
 - (IBAction)changeBid:(UISlider *)sender {
