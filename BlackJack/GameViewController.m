@@ -312,64 +312,31 @@
     
     [agent setBid:randomBid];
     
-    int randomNumber = arc4random() % 100;
+    while (1) {
     
-    [self updateMessageUsingAnimationWithStatus:[NSString stringWithFormat:@"Prob.: %d.", randomNumber]];
+        int randomNumber = arc4random() % 100;
     
-    if (randomNumber <= 25) {
-        [UIView animateWithDuration:3 animations:^{
-            [self updateMessageUsingAnimationWithStatus:@"Action: Hit."];
-            [self.turn hitCardFor:agent];
-            [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
-            [self.turn standFor:agent];
-        }];
-    } else if (randomNumber <= 50) {
-        [self updateMessageUsingAnimationWithStatus:@"Action: Surrender."];
-        [self.turn surrenderFor:agent];
-    } else if (randomNumber <= 75) {
-        [self updateMessageUsingAnimationWithStatus:@"Action: Double Down."];
-        [self.turn doubleDownFor:agent];
-        [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
-        [self.turn standFor:agent];
-    } else {
-        [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
-        [self.turn standFor:agent];
-    }
+        [self updateMessageUsingAnimationWithStatus:[NSString stringWithFormat:@"Prob.: %d.", randomNumber]];
     
-}
-
--(void) heuristicAgentTurn:(Player *)agent
-{
-    [self updateMessageUsingAnimationWithStatus:@"**** Agent H Turn! ****"];
-    [self updateMessageUsingAnimationWithStatus:@"Bid: 15."];
-    double randomBid = 15;    
-    [agent setBid:randomBid];
-
-    int points = [agent cardPoints];
-    int probability = arc4random() % 100;
-     [self updateMessageUsingAnimationWithStatus:[NSString stringWithFormat:@"Prob.: %d.", probability]];
-    
-    while ( points < 17) {
-        
-        if (probability < 5 && [self.turn.dealer cardPoints] == 10) {
+        if (randomNumber <= 25) {
+            [UIView animateWithDuration:3 animations:^{
+                [self updateMessageUsingAnimationWithStatus:@"Action: Hit."];
+                [self.turn hitCardFor:agent];
+            }];
+        } else if (randomNumber <= 50) {
             [self updateMessageUsingAnimationWithStatus:@"Action: Surrender."];
             [self.turn surrenderFor:agent];
-            return;
-        } else if (points >= 12 && points <= 14 && !agent.doubledown && probability <= 40) {
-            [self updateMessageUsingAnimationWithStatus:@"Action: DoubleDown."];
+            break;
+        } else if (randomNumber <= 75) {
+            [self updateMessageUsingAnimationWithStatus:@"Action: Double Down."];
             [self.turn doubleDownFor:agent];
         } else {
-            [self updateMessageUsingAnimationWithStatus:@"Action: Hit."];
-            [self.turn hitCardFor:agent];
+            [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
+            [self.turn standFor:agent];
+            break;
         }
-        points = [agent cardPoints];
     }
-    // pontuação >= 17 e não desistiu
-    [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
-    [self.turn standFor:agent];
-    
 }
-
 
 -(void) heuristicCountAgentTurn:(Player *)agent
 {
@@ -381,7 +348,7 @@
     // probabilidade de tirar uma carta cuja a pontuação seja menor ou igual a 21
     double probability;
     
-    while ([agent cardPoints] < 17) {
+    while (1) {
         
 
         probability = [self calcProbability];
@@ -389,9 +356,17 @@
         [self updateMessageUsingAnimationWithStatus:[NSString stringWithFormat:@"Prob.: %f.", probability]];
         
         if (probability < 0.50 || [self.turn.dealer cardPoints] == 10) {
-            [self updateMessageUsingAnimationWithStatus:@"Action: Surrender."];
-            [self.turn surrenderFor:agent];
-            return;
+            
+            if([agent cardPoints] < 17){
+                [self updateMessageUsingAnimationWithStatus:@"Action: Surrender."];
+                [self.turn surrenderFor:agent];
+                break;
+            }
+            else{
+                [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
+                [self.turn standFor:agent];
+                break;
+            }
         } else if (!agent.doubledown && probability >= 0.75 ) {
             [self updateMessageUsingAnimationWithStatus:@"Action: DoubleDown."];
             [self.turn doubleDownFor:agent];

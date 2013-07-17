@@ -41,6 +41,7 @@
     Card *c = (PlayingCard *) [self.deck drawRandomCard];
     c.faceUp = YES;
     [basePlayer.cards addObject:c];
+    
     return [self statusTurnMessageForPlayer:basePlayer];
 }
 
