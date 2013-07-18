@@ -424,8 +424,6 @@
 -(void) heuristicCountAgentTurn:(Player *)agent
 {
     [self updateMessageUsingAnimationWithStatus:@"**** Agent M Turn! ****"];
-    // if(ganhou) Martingale = 1;
-    // if(perdeu) Martingale *= 2;
     double randomBid = 15 * self.martingale; // * [self calcMartingale]
     [agent setBid:randomBid];
 
