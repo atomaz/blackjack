@@ -41,6 +41,8 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 
+@property int martingale;
+
 
 // TURN BUTTONS
 @property (weak, nonatomic) IBOutlet UIButton *bidButton;
@@ -79,6 +81,7 @@
     self.messageLabel.text = @"";
     self.messageTextArea.text = @"";
     self.messageTextArea.editable = NO;
+    self.martingale = 1;
 }
 
 -(void) configureCrowns
@@ -298,6 +301,20 @@
     self.dealerTurn = NO;
     self.currentPlayerTurn = nil;
 
+    
+    
+    // Martingale
+    BasePlayer *p = ((BasePlayer *)self.turn.players[2]);
+    int martingalePoints = [p cardPoints];
+    if (martingalePoints <= 21 && ![self.turn.surrendedPlayers containsObject:p]) {
+        if(martingalePoints > self.turn.dealer.cardPoints
+           && martingalePoints <= 21) {
+            self.martingale = 1;
+        }
+    } else {
+        self.martingale *=2;
+    }
+        
     [self updateUI];
     
 }
@@ -337,7 +354,7 @@
         }
     }
 }
-
+/*
 -(void) heuristicCountAgentTurn:(Player *)agent
 {
     [self updateMessageUsingAnimationWithStatus:@"**** Agent H Turn! ****"];
@@ -378,7 +395,50 @@
     }
     
 }
- 
+
+*/
+
+/* Martingale */
+-(void) heuristicCountAgentTurn:(Player *)agent
+{
+    [self updateMessageUsingAnimationWithStatus:@"**** Agent M Turn! ****"];
+    // if(ganhou) Martingale = 1;
+    // if(perdeu) Martingale *= 2;
+    double randomBid = 15 * self.martingale;
+    [agent setBid:randomBid];
+
+    NSString *s = [NSString stringWithFormat:@"Bid: %.f", randomBid];
+    [self updateMessageUsingAnimationWithStatus:s];
+    
+    // probabilidade de tirar uma carta cuja a pontuação seja menor ou igual a 21
+    double probability;
+    
+    while (1) {
+        
+        
+        probability = [self calcProbability];
+        
+        [self updateMessageUsingAnimationWithStatus:[NSString stringWithFormat:@"Prob.: %f.", probability]];
+        
+        if (probability < 0.50 || [self.turn.dealer cardPoints] == 10) {
+            if([agent cardPoints] < 17){
+                [self updateMessageUsingAnimationWithStatus:@"Action: Surrender."];
+                [self.turn surrenderFor:agent];
+                break;
+            }
+            else{
+                [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
+                [self.turn standFor:agent];
+                break;
+            }
+            return;
+        } else {
+            [self updateMessageUsingAnimationWithStatus:@"Action: Hit."];
+            [self.turn hitCardFor:agent];
+        }
+        
+    }
+}
 
 -(double) calcProbability {
     double probability = 0;

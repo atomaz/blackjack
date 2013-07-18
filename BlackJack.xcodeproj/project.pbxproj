@@ -60,6 +60,12 @@
 		4DADB2471778783000B1DD30 /* talabheim_paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB22A1778783000B1DD30 /* talabheim_paper.png */; };
 		4DADB2481778783000B1DD30 /* textura_huge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB22B1778783000B1DD30 /* textura_huge.jpg */; };
 		4DADB2491778783000B1DD30 /* verso.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DADB22C1778783000B1DD30 /* verso.png */; };
+		4DC049BD179773580054FDEE /* bntDouble.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC049B8179773580054FDEE /* bntDouble.png */; };
+		4DC049BE179773580054FDEE /* bntHit.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC049B9179773580054FDEE /* bntHit.png */; };
+		4DC049BF179773580054FDEE /* bntStand.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC049BA179773580054FDEE /* bntStand.png */; };
+		4DC049C0179773580054FDEE /* bntSurrender.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC049BB179773580054FDEE /* bntSurrender.png */; };
+		4DC049C1179773580054FDEE /* carta.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC049BC179773580054FDEE /* carta.png */; };
+		4DC049C31797737E0054FDEE /* bntApostar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC049C21797737E0054FDEE /* bntApostar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +138,12 @@
 		4DADB22A1778783000B1DD30 /* talabheim_paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = talabheim_paper.png; path = Images/talabheim_paper.png; sourceTree = "<group>"; };
 		4DADB22B1778783000B1DD30 /* textura_huge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = textura_huge.jpg; path = Images/textura_huge.jpg; sourceTree = "<group>"; };
 		4DADB22C1778783000B1DD30 /* verso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = verso.png; path = Images/verso.png; sourceTree = "<group>"; };
+		4DC049B8179773580054FDEE /* bntDouble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bntDouble.png; sourceTree = "<group>"; };
+		4DC049B9179773580054FDEE /* bntHit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bntHit.png; sourceTree = "<group>"; };
+		4DC049BA179773580054FDEE /* bntStand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bntStand.png; sourceTree = "<group>"; };
+		4DC049BB179773580054FDEE /* bntSurrender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bntSurrender.png; sourceTree = "<group>"; };
+		4DC049BC179773580054FDEE /* carta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carta.png; sourceTree = "<group>"; };
+		4DC049C21797737E0054FDEE /* bntApostar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bntApostar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +176,12 @@
 		4D107C621777C7F3000254D1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4DC049C21797737E0054FDEE /* bntApostar.png */,
+				4DC049B8179773580054FDEE /* bntDouble.png */,
+				4DC049B9179773580054FDEE /* bntHit.png */,
+				4DC049BA179773580054FDEE /* bntStand.png */,
+				4DC049BB179773580054FDEE /* bntSurrender.png */,
+				4DC049BC179773580054FDEE /* carta.png */,
 				4D2535CE177F7E0400C425FA /* coroa.png */,
 				4DAA92D9177E542700BE433A /* MesaFundo.png */,
 				4DADB2101778783000B1DD30 /* cardback.png */,
@@ -383,6 +401,12 @@
 				4DADB2491778783000B1DD30 /* verso.png in Resources */,
 				4DAA92DA177E542700BE433A /* MesaFundo.png in Resources */,
 				4D2535CF177F7E0400C425FA /* coroa.png in Resources */,
+				4DC049BD179773580054FDEE /* bntDouble.png in Resources */,
+				4DC049BE179773580054FDEE /* bntHit.png in Resources */,
+				4DC049BF179773580054FDEE /* bntStand.png in Resources */,
+				4DC049C0179773580054FDEE /* bntSurrender.png in Resources */,
+				4DC049C1179773580054FDEE /* carta.png in Resources */,
+				4DC049C31797737E0054FDEE /* bntApostar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

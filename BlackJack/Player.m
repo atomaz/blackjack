@@ -60,7 +60,7 @@
 // desiste do jogo .. paga metade da aposta
 -(void) surrendBid
 {
-    self.cash += self.bid / 2;
+    self.cash += (self.bid / 2);
     self.bid = 0;
 }
 
