@@ -377,11 +377,6 @@
 
     }
     
-    // pontuação >= 17 e não desistiu
-    [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
-    [self.turn standFor:agent];
-    
-
 }
  
 

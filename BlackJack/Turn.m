@@ -142,6 +142,10 @@
     for (Player *p in self.players) {
          [self insertAtTempDeckCardsFrom:p];
     }
+    
+    [self.standedPlayers removeAllObjects];
+    [self.surrendedPlayers removeAllObjects];
+    
     [self insertAtTempDeckCardsFrom:self.dealer];
     
     // se o número de carta de decks for inferior ao
