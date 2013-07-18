@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "395800686.512722"
+         timestampString = "395807102.574716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "505"
-         endingLineNumber = "505"
+         startingLineNumber = "524"
+         endingLineNumber = "524"
          landmarkName = "-doubleDown:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +138,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "395800686.512722"
+         timestampString = "395807102.574716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "444"
-         endingLineNumber = "444"
+         startingLineNumber = "464"
+         endingLineNumber = "464"
          landmarkName = "-calcProbability"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +151,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "395800686.512722"
+         timestampString = "395807102.574716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "455"
-         endingLineNumber = "455"
+         startingLineNumber = "475"
+         endingLineNumber = "475"
          landmarkName = "-calcProbability"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "395800686.512722"
+         timestampString = "395807102.574716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "457"
-         endingLineNumber = "457"
+         startingLineNumber = "477"
+         endingLineNumber = "477"
          landmarkName = "-calcProbability"
          landmarkType = "5">
       </FileBreakpoint>
@@ -216,11 +216,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "395800686.512722"
+         timestampString = "395807102.574716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "405"
-         endingLineNumber = "405"
+         startingLineNumber = "427"
+         endingLineNumber = "427"
          landmarkName = "-heuristicCountAgentTurn:"
          landmarkType = "5">
       </FileBreakpoint>

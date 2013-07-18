@@ -217,7 +217,7 @@
         self.surrenderButton.hidden = NO;
         
         // se houver aposta, seta o valor da aposta.
-        self.bidLabel.text =[[NSString alloc] initWithFormat:@"R$ %d", [human bid]];
+        self.bidLabel.text = @"";
         
         
     } else {
@@ -231,7 +231,7 @@
         
         
         // se não houver aposta, pega o valor corrente do slider
-        self.bidLabel.text =[[NSString alloc] initWithFormat:@"R$ %.f", self.slider.value];
+        self.bidLabel.text =[[NSString alloc] initWithFormat:@"R$ %.2f", self.slider.value];
         
         [self updateMessageUsingAnimationWithStatus:@""];
     }
@@ -329,7 +329,7 @@
     
     [agent setBid:randomBid];
     
-    while (1) {
+    while ([agent cardPoints] < 21) {
     
         int randomNumber = arc4random() % 100;
     
@@ -343,14 +343,14 @@
         } else if (randomNumber <= 50) {
             [self updateMessageUsingAnimationWithStatus:@"Action: Surrender."];
             [self.turn surrenderFor:agent];
-            break;
+            return;
         } else if (randomNumber <= 75) {
             [self updateMessageUsingAnimationWithStatus:@"Action: Double Down."];
             [self.turn doubleDownFor:agent];
         } else {
             [self updateMessageUsingAnimationWithStatus:@"Action: Stand."];
             [self.turn standFor:agent];
-            break;
+            return;
         }
     }
 }
@@ -372,7 +372,7 @@
         
         [self updateMessageUsingAnimationWithStatus:[NSString stringWithFormat:@"Prob.: %f.", probability]];
         
-        if (probability < 0.50 || [self.turn.dealer cardPoints] == 10) {
+        if (probability < 0.50) {
             
             if([agent cardPoints] < 17){
                 [self updateMessageUsingAnimationWithStatus:@"Action: Surrender."];
@@ -398,13 +398,35 @@
 
 */
 
+-(double) calcMartingale {
+    double probability = 0;
+    for (PlayingCard *c in [self.turn.deck cards]) {
+        int index = c.rank;
+        if (index <= 6 && index >= 2) {
+            probability++;
+        } else if ((index <= 13 && index >= 10) || index == 1) {
+            probability--;
+        }
+    }
+    probability /= 3;
+    if(probability > 5)
+    {
+        probability = 5;
+    }
+    else if(probability < 0)
+    {
+        probability = 0;
+    }
+    return probability++;
+}
+
 /* Martingale */
 -(void) heuristicCountAgentTurn:(Player *)agent
 {
     [self updateMessageUsingAnimationWithStatus:@"**** Agent M Turn! ****"];
     // if(ganhou) Martingale = 1;
     // if(perdeu) Martingale *= 2;
-    double randomBid = 15 * self.martingale;
+    double randomBid = 15 * self.martingale; // * [self calcMartingale]
     [agent setBid:randomBid];
 
     NSString *s = [NSString stringWithFormat:@"Bid: %.f", randomBid];
@@ -414,13 +436,11 @@
     double probability;
     
     while (1) {
-        
-        
         probability = [self calcProbability];
         
         [self updateMessageUsingAnimationWithStatus:[NSString stringWithFormat:@"Prob.: %f.", probability]];
         
-        if (probability < 0.50 || [self.turn.dealer cardPoints] == 10) {
+        if (probability < 0.50) {
             if([agent cardPoints] < 17){
                 [self updateMessageUsingAnimationWithStatus:@"Action: Surrender."];
                 [self.turn surrenderFor:agent];
@@ -472,10 +492,9 @@
 }
 
 
-- (IBAction)changeBid:(UISlider *)sender {
-    
-    // ALTERAR !!!!
-    //self.bidLabel.text = [[NSString alloc] initWithFormat:@"R$ %.f", sender.value];
+- (IBAction)changeBid:(UISlider *)sender
+{    
+    self.bidLabel.text = [[NSString alloc] initWithFormat:@"R$ %.f", sender.value];
 }
 
 
