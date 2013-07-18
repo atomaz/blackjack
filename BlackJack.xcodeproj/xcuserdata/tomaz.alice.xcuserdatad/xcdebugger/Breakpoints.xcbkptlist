@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "395796220.97306"
+         timestampString = "395798549.294786"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "450"
-         endingLineNumber = "450"
+         startingLineNumber = "445"
+         endingLineNumber = "445"
          landmarkName = "-doubleDown:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +138,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "395796220.97306"
+         timestampString = "395798549.294786"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "389"
-         endingLineNumber = "389"
+         startingLineNumber = "384"
+         endingLineNumber = "384"
          landmarkName = "-calcProbability"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +151,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "395796220.97306"
+         timestampString = "395798549.294786"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "400"
-         endingLineNumber = "400"
+         startingLineNumber = "395"
+         endingLineNumber = "395"
          landmarkName = "-calcProbability"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BlackJack/GameViewController.m"
-         timestampString = "395796220.97306"
+         timestampString = "395798549.294786"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "402"
-         endingLineNumber = "402"
+         startingLineNumber = "397"
+         endingLineNumber = "397"
          landmarkName = "-calcProbability"
          landmarkType = "5">
       </FileBreakpoint>
